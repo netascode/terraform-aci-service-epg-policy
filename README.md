@@ -1,23 +1,24 @@
 <!-- BEGIN_TF_DOCS -->
-[![Tests](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
+[![Tests](https://github.com/netascode/terraform-aci-service-epg-policy/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-service-epg-policy/actions/workflows/test.yml)
 
-# Terraform ACI Scaffolding Module
+# Terraform ACI Service EPG Policy Module
 
 Description
 
 Location in GUI:
-`Tenants` » `XXX`
+`Tenants` » `XXX` » `Policies` » `Protocol` » `L4-L7 Service EPG Policy`
 
 ## Examples
 
 ```hcl
-module "aci_scaffolding" {
-  source  = "netascode/scaffolding/aci"
-  version = ">= 0.0.1"
+module "aci_service_epg_policy" {
+  source  = "netascode/service-epg-policy/aci"
+  version = ">= 0.1.0"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  tenant          = "ABC"
+  name            = "SERVICE_EPG_POLICY_1"
+  description     = "My Description"
+  preferred_group = true
 }
 ```
 
@@ -38,20 +39,21 @@ module "aci_scaffolding" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | Tenant name. | `string` | n/a | yes |
-| <a name="input_alias"></a> [alias](#input\_alias) | Tenant alias. | `string` | `""` | no |
-| <a name="input_description"></a> [description](#input\_description) | Tenant description. | `string` | `""` | no |
+| <a name="input_tenant"></a> [tenant](#input\_tenant) | Tenant name. | `string` | n/a | yes |
+| <a name="input_name"></a> [name](#input\_name) | Service EPG policy name. | `string` | n/a | yes |
+| <a name="input_description"></a> [description](#input\_description) | Service EPG policy description. | `string` | `""` | no |
+| <a name="input_preferred_group"></a> [preferred\_group](#input\_preferred\_group) | Preferred group flag. | `bool` | `false` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `fvTenant` object. |
-| <a name="output_name"></a> [name](#output\_name) | Tenant name. |
+| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `vnsSvcEPgPol` object. |
+| <a name="output_name"></a> [name](#output\_name) | Service EPG policy name. |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aci_rest_managed.fvTenant](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
+| [aci_rest_managed.vnsSvcEPgPol](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->

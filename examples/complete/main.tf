@@ -1,8 +1,9 @@
-module "aci_scaffolding" {
-  source  = "netascode/scaffolding/aci"
-  version = ">= 0.0.1"
+module "aci_service_epg_policy" {
+  source  = "netascode/service-epg-policy/aci"
+  version = ">= 0.1.0"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  tenant          = "ABC"
+  name            = "SERVICE_EPG_POLICY_1"
+  description     = "My Description"
+  preferred_group = true
 }
