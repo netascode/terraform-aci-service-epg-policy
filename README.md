@@ -3,7 +3,7 @@
 
 # Terraform ACI Service EPG Policy Module
 
-Description
+Manages ACI Service EPG Policy
 
 Location in GUI:
 `Tenants` » `XXX` » `Policies` » `Protocol` » `L4-L7 Service EPG Policy`
